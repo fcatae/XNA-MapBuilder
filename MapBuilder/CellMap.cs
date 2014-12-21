@@ -89,8 +89,6 @@ namespace MapBuilder
             bool validX = (cellX >= 0) && (cellX < Map.GetLength(1));
 
             _activeCell.Current = (validX && validY) ? MapCell[cellY, cellX] : null;
-
-            Debug.WriteLine(cellX + "," + cellY);
         }
     }
 }

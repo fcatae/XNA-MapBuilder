@@ -24,6 +24,19 @@ namespace MapBuilder
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            // Frame rate changed to 60fps
+            TargetElapsedTime = TimeSpan.FromTicks(166667);
+
+            // Extend battery life under lock.
+            InactiveSleepTime = TimeSpan.FromSeconds(1);
+
+            //graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //graphics.IsFullScreen = true;
+            //graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+            //graphics.PreparingDeviceSettings += (o, e) => e.GraphicsDeviceInformation.PresentationParameters.PresentationInterval = PresentInterval.One;
+
         }
 
         protected override void Initialize()
