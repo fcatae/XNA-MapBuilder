@@ -24,7 +24,6 @@ namespace MapBuilder
         public CellMap(Game game) : base(game)
         {
             Position = new Vector2(0,0);
-            _activeCell = new ActiveCell(game);
         }
 
         public override void Initialize()
