@@ -35,7 +35,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cell.cs" />
+    <Compile Include="CellMap.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="MouseInput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapBuilderContent\MapBuilderContent\MapBuilderContent.csproj">
+      <Project>{f2ddc629-58ae-4724-99f4-30950b41ea2e}</Project>
+      <Name>MapBuilderContent</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
