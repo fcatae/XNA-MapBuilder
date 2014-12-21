@@ -20,7 +20,6 @@ namespace MapBuilder
         public Cell[,] MapCell;
         
         GameComponentCollection _components;
-        ActiveCell _activeCell;
 
         public CellMap(Game game) : base(game)
         {
@@ -46,7 +45,6 @@ namespace MapBuilder
                 }
             }
 
-            _components.Add(_activeCell);
             _components.Add(new CellMapHover(this));
 
             base.Initialize();
