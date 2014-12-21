@@ -46,7 +46,7 @@ namespace MapBuilder
             Components.Add(map);
             Components.Add(new ActiveCell(this));
             
-            Game.IsMouseVisible = true;
+            this.IsMouseVisible = true;
 
             base.Initialize();
         }
