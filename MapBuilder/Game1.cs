@@ -41,10 +41,12 @@ namespace MapBuilder
 
         protected override void Initialize()
         {
-            CellMap map = new CellMap(this) { Position = new Vector2(256f, 64f) };
-
+            CellMap map = new CellMap(this) { Position = new Vector2(64f, 64f) };
+            ButtonCollection buttons = new ButtonCollection(this) { Position = new Vector2(64f, 320f) };
             Components.Add(map);
-            Components.Add(new ActiveCell(this));
+            Components.Add(buttons);
+            
+            //Components.Add(new ActiveCell(this));
             
             this.IsMouseVisible = true;
 
