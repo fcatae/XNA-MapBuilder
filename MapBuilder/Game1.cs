@@ -44,7 +44,9 @@ namespace MapBuilder
             CellMap map = new CellMap(this) { Position = new Vector2(256f, 64f) };
 
             Components.Add(map);
-            Components.Add(new ActiveCell(this));            
+            Components.Add(new ActiveCell(this));
+            
+            Game.IsMouseVisible = true;
 
             base.Initialize();
         }

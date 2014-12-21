@@ -15,7 +15,6 @@ namespace MapBuilder
         SpriteBatch _spriteBatch;
         Texture2D _texture;
         Vector2 _position;
-        bool _visible;
 
         public ActiveCell(Game game)
             : base(game)
@@ -24,7 +23,6 @@ namespace MapBuilder
 
         public override void Initialize()
         {
-            Game.IsMouseVisible = true;
             base.Initialize();
         }
 
