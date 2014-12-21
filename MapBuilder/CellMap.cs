@@ -18,6 +18,7 @@ namespace MapBuilder
                                {"z0", "z0", "z0", "z0"}
                                };
         public Cell[,] MapCell;
+        Model _map;
 
         GameComponentCollection _components;
         ActiveCell _activeCell;
@@ -47,6 +48,7 @@ namespace MapBuilder
             }
 
             _components.Add(_activeCell);
+            _components.Add(new CellMapHover(this));
 
             base.Initialize();
         }
@@ -73,7 +75,7 @@ namespace MapBuilder
                 }
             }
 
-            Hover();
+            //Hover();
 
             base.Draw(gameTime);
         }
