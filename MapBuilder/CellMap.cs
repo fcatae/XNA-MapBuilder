@@ -18,8 +18,7 @@ namespace MapBuilder
                                {"z0", "z0", "z0", "z0"}
                                };
         public Cell[,] MapCell;
-        Model _map;
-
+        
         GameComponentCollection _components;
         ActiveCell _activeCell;
 
@@ -75,22 +74,8 @@ namespace MapBuilder
                 }
             }
 
-            //Hover();
-
             base.Draw(gameTime);
         }
 
-        void Hover()
-        {
-            MouseState state = Mouse.GetState();
-
-            int cellX = (int)((state.Position.X - this.Position.X) / 64f);
-            int cellY = (int)((state.Position.Y - this.Position.Y) / 64f);
-
-            bool validY = (cellY >= 0) && (cellY < Map.GetLength(0));
-            bool validX = (cellX >= 0) && (cellX < Map.GetLength(1));
-
-            _activeCell.Current = (validX && validY) ? MapCell[cellY, cellX] : null;
-        }
     }
 }
