@@ -8,17 +8,18 @@ using System.Text;
 
 namespace MapBuilder
 {
-    class MouseInput : DrawableGameComponent
+    class ActiveCell : DrawableGameComponent
     {
+        public Cell Current;
+        const float POSITION_OFFSET = 2f;
         SpriteBatch _spriteBatch;
         Texture2D _texture;
         Vector2 _position;
         bool _visible;
 
-        public MouseInput(Game game)
+        public ActiveCell(Game game)
             : base(game)
         {
-
         }
 
         public override void Initialize()
@@ -34,22 +35,17 @@ namespace MapBuilder
             base.LoadContent();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            MouseState state = Mouse.GetState();
-
-            //state.LeftButton
-
-            _position.X = state.Position.X;
-            _position.Y = state.Position.Y;
-            
-            base.Update(gameTime);
-        }
-
         public override void Draw(GameTime gameTime)
         {
-            _spriteBatch.Draw(_texture, _position, Color.White);
-            
+            if (Current != null)
+            {
+                _position.X = Current.Position.X - POSITION_OFFSET;
+                _position.Y = Current.Position.Y - POSITION_OFFSET;
+
+                _spriteBatch.Begin();
+                _spriteBatch.Draw(_texture, _position, Color.White);
+                _spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
     }
