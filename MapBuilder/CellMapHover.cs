@@ -10,19 +10,21 @@ namespace MapBuilder
 {
     class CellMapHover : DrawableGameComponent
     {
+        CellMap _map;
         ActiveCell _activeCell;
         Vector2 _position;
         Cell[,] _mapCell;
         
         public CellMapHover(CellMap map) : base(map.Game)
         {
+            _map = map;
+            _mapCell = map.MapCell;
             _activeCell = new ActiveCell(map.Game);
         }
 
         public override void Initialize()
         {
-            _position = map.Position;
-            _mapCell = map.MapCell;
+            _position = _map.Position;
             _activeCell.Initialize();
             base.Initialize();
         }
