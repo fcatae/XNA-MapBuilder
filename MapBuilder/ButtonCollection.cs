@@ -13,15 +13,17 @@ namespace MapBuilder
     {
         const float SPACE_OFFSET = 80f;
 
+        EditorState _editor;
         public Vector2 Position;
         public Cell[] ButtonCells;
         ActiveCell _activeCell;
 
         GameComponentCollection _components;
 
-        public ButtonCollection(Game game)
+        public ButtonCollection(Game game, EditorState editor)
             : base(game)
         {
+            _editor = editor;
             ButtonCells = new Cell[] {
                 new Cell(game, "a0"),
                 new Cell(game, "b0"),
@@ -42,10 +44,14 @@ namespace MapBuilder
             }
 
             _components.Add(_activeCell);
+
+            _editor.SelectedType = ButtonCells[0].CellType;
+            _activeCell.Current = ButtonCells[0];
         }
 
         void SelectCell(object cell)
         {
+            _editor.SelectedType = ((Cell)cell).CellType;
             _activeCell.Current = (Cell)cell;
         }
 

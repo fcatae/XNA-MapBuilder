@@ -14,12 +14,14 @@ namespace MapBuilder
         Vector2 _position;
         Cell[,] _mapCell;
         bool _lastState;
+        Action<int, int> _callbackFunc;
 
-        public CellMapClick(CellMap map)
+        public CellMapClick(CellMap map, Action<int,int> fn)
             : base(map.Game)
         {
             _map = map;
             _mapCell = map.MapCell;
+            _callbackFunc = fn;
         }
 
         public override void Initialize()
@@ -53,7 +55,9 @@ namespace MapBuilder
                 bool validX = (cellX >= 0) && (cellX < _mapCell.GetLength(1));
 
                 if (validX && validY)
-                    _map.SetMapCell(cellX, cellY, "a0");
+                {
+                    _callbackFunc(cellX, cellY);
+                }
             }
         }
     }

@@ -16,8 +16,13 @@ namespace MapBuilder
         
         public Vector2 Position;
 
+        public string CellType {
+            get { return _name; }
+        }
+
         public void SetType(string type)
         {
+            _name = type;
             _texture = Game.Content.Load<Texture2D>(type);
         }
 

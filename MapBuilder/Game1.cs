@@ -18,6 +18,7 @@ namespace MapBuilder
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        EditorState editorState;
 
         public Game1()
             : base()
@@ -36,9 +37,10 @@ namespace MapBuilder
             //graphics.IsFullScreen = true;
             //graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
             //graphics.PreparingDeviceSettings += (o, e) => e.GraphicsDeviceInformation.PresentationParameters.PresentationInterval = PresentInterval.One;
-            
-            CellMap map = new CellMap(this) { Position = new Vector2(64f, 64f) };
-            ButtonCollection buttons = new ButtonCollection(this) { Position = new Vector2(64f, 320f) };
+
+            editorState = new EditorState();
+            CellMap map = new CellMap(this, editorState) { Position = new Vector2(64f, 64f) };
+            ButtonCollection buttons = new ButtonCollection(this, editorState) { Position = new Vector2(64f, 320f) };
             Components.Add(map);
             Components.Add(buttons);
             

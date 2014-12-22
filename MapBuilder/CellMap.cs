@@ -11,24 +11,30 @@ namespace MapBuilder
 {
     class CellMap : DrawableGameComponent
     {
+        EditorState _editor;
         public Vector2 Position;
         public string[,] Map = {
-                               {"z0", "z0", "z0", "z0"},
-                               {"z0", "z0", "z0", "z0"},
-                               {"z0", "z0", "z0", "z0"}
+                               {"z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0"},
+                               {"z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0"},
+                               {"z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0", "z0"}
                                };
         public Cell[,] MapCell;
         
         GameComponentCollection _components;
-
-        public void SetMapCell(int x, int y, string type)
+        
+        void SetMapCell(int x, int y)
         {
+            string type = _editor.SelectedType;
+
+            Debug.Assert(type != null);
+
             Map[y, x] = type;
             MapCell[y, x].SetType(type);
         }
 
-        public CellMap(Game game) : base(game)
+        public CellMap(Game game, EditorState editor) : base(game)
         {
+            _editor = editor;
             _components = new GameComponentCollection();
 
             MapCell = new Cell[Map.GetLength(0), Map.GetLength(1)];
@@ -44,7 +50,7 @@ namespace MapBuilder
             }
 
             //_components.Add(new CellMapHover(this));
-            _components.Add(new CellMapClick(this));
+            _components.Add(new CellMapClick(this, SetMapCell));
 
         }
 
