@@ -35,6 +35,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ButtonClick.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="ButtonCollection.cs" />
     <Compile Include="CellMap.cs" />

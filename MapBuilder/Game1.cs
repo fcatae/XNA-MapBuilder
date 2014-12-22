@@ -36,16 +36,17 @@ namespace MapBuilder
             //graphics.IsFullScreen = true;
             //graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
             //graphics.PreparingDeviceSettings += (o, e) => e.GraphicsDeviceInformation.PresentationParameters.PresentationInterval = PresentInterval.One;
-
-        }
-
-        protected override void Initialize()
-        {
+            
             CellMap map = new CellMap(this) { Position = new Vector2(64f, 64f) };
             ButtonCollection buttons = new ButtonCollection(this) { Position = new Vector2(64f, 320f) };
             Components.Add(map);
             Components.Add(buttons);
             
+
+        }
+
+        protected override void Initialize()
+        {
             //Components.Add(new ActiveCell(this));
             
             this.IsMouseVisible = true;

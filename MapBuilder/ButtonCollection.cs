@@ -22,8 +22,6 @@ namespace MapBuilder
         public ButtonCollection(Game game)
             : base(game)
         {
-            Position = new Vector2(0,0);
-
             ButtonCells = new Cell[] {
                 new Cell(game, "a0"),
                 new Cell(game, "b0"),
@@ -34,25 +32,28 @@ namespace MapBuilder
                 };
 
             _activeCell = new ActiveCell(game);
+
+            _components = new GameComponentCollection();
+
+            foreach (var button in ButtonCells)
+            {
+                _components.Add(new ButtonClick(button));
+            }
+
+            _components.Add(_activeCell);
         }
 
         public override void Initialize()
         {
-            _components = new GameComponentCollection();
-
             float spacing = 0f;
 
-            foreach(var button in ButtonCells)
+            foreach (var button in ButtonCells)
             {
                 button.Position.X = this.Position.X + spacing;
                 button.Position.Y = this.Position.Y;
-                
-                _components.Add(button);
 
                 spacing += SPACE_OFFSET;
             }
-
-            _components.Add(_activeCell);
 
             base.Initialize();
         }
@@ -67,6 +68,20 @@ namespace MapBuilder
             base.LoadContent();
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            foreach (var comp in _components)
+            {
+                IUpdateable cell = comp as IUpdateable;
+
+                if (cell != null)
+                {
+                    cell.Update(gameTime);
+                }
+            }
+
+            base.Update(gameTime);
+        }
         public override void Draw(GameTime gameTime)
         {
             foreach(var comp in _components)
