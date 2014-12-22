@@ -37,7 +37,9 @@ namespace MapBuilder
                 }
             }
 
-            _components.Add(new CellMapHover(this));
+            //_components.Add(new CellMapHover(this));
+            _components.Add(new CellMapClick(this));
+
         }
 
         public override void Initialize()
@@ -62,6 +64,21 @@ namespace MapBuilder
             }
 
             base.LoadContent();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            foreach (var comp in _components)
+            {
+                IUpdateable cell = comp as IUpdateable;
+
+                if (cell != null)
+                {
+                    cell.Update(gameTime);
+                }
+            }
+
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
