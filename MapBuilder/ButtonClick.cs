@@ -13,11 +13,15 @@ namespace MapBuilder
         Cell _current;
         ActiveCell _tmp;
         bool _lastState;
+        Action<object> _callbackFunc;
+        object _callbackParam;
 
-        public ButtonClick(Cell cell) : base(cell.Game)
+        public ButtonClick(Cell cell, Action<object> fn, object param) : base(cell.Game)
         {
             _current = cell;
             _tmp = new ActiveCell(cell.Game);
+            _callbackFunc = fn;
+            _callbackParam = param;
             cell.Game.Components.Add(_tmp);
         }
 
@@ -65,7 +69,8 @@ namespace MapBuilder
 
         void ExecuteCommand()
         {
-            _tmp.Current = (_tmp.Current == null) ? _current : null;
+            _callbackFunc(_callbackParam);
+            //_tmp.Current = (_tmp.Current == null) ? _current : null;
         }
     }
 }

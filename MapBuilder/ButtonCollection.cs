@@ -28,7 +28,8 @@ namespace MapBuilder
                 new Cell(game, "b1"),
                 new Cell(game, "c0"),
                 new Cell(game, "c2"),
-                new Cell(game, "d0")
+                new Cell(game, "d0"),
+                new Cell(game, "z0")
                 };
 
             _activeCell = new ActiveCell(game);
@@ -37,10 +38,15 @@ namespace MapBuilder
 
             foreach (var button in ButtonCells)
             {
-                _components.Add(new ButtonClick(button));
+                _components.Add(new ButtonClick(button, SelectCell, button));
             }
 
             _components.Add(_activeCell);
+        }
+
+        void SelectCell(object cell)
+        {
+            _activeCell.Current = (Cell)cell;
         }
 
         public override void Initialize()
