@@ -16,13 +16,13 @@ namespace MapBuilder
         
         public CellMapHover(CellMap map) : base(map.Game)
         {
-            _position = map.Position;
-            _mapCell = map.MapCell;
             _activeCell = new ActiveCell(map.Game);
         }
 
         public override void Initialize()
         {
+            _position = map.Position;
+            _mapCell = map.MapCell;
             _activeCell.Initialize();
             base.Initialize();
         }
