@@ -23,6 +23,11 @@ namespace MapBuilder
 
         public CellMap(Game game) : base(game)
         {
+            Position = new Vector2(0,0);
+        }
+
+        public override void Initialize()
+        {
             _components = new GameComponentCollection();
 
             MapCell = new Cell[Map.GetLength(0), Map.GetLength(1)];
@@ -32,24 +37,14 @@ namespace MapBuilder
                 for (int x = 0; x < Map.GetLength(1); x++)
                 {
                     Cell cell = new Cell(Game, Map[y, x]);
+                    cell.Position = new Vector2(x * 64f + Position.X, y * 64f + Position.Y);
+
                     _components.Add(cell);
                     MapCell[y, x] = cell;
                 }
             }
 
             _components.Add(new CellMapHover(this));
-        }
-
-        public override void Initialize()
-        {
-            for (int y = 0; y < Map.GetLength(0); y++)
-            {
-                for (int x = 0; x < Map.GetLength(1); x++)
-                {
-                    Cell cell = MapCell[y, x];
-                    cell.Position = new Vector2(x * 64f + Position.X, y * 64f + Position.Y);
-                }
-            }
 
             base.Initialize();
         }
