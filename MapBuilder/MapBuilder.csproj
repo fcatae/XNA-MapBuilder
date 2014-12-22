@@ -39,6 +39,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="ButtonCollection.cs" />
     <Compile Include="CellMap.cs" />
+    <Compile Include="CellMapClick.cs" />
     <Compile Include="CellMapHover.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="ActiveCell.cs" />
