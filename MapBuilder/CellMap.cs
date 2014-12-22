@@ -21,6 +21,12 @@ namespace MapBuilder
         
         GameComponentCollection _components;
 
+        public void SetMapCell(int x, int y, string type)
+        {
+            Map[y, x] = type;
+            MapCell[y, x].SetType(type);
+        }
+
         public CellMap(Game game) : base(game)
         {
             _components = new GameComponentCollection();

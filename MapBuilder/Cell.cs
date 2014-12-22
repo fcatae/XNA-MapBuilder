@@ -16,6 +16,11 @@ namespace MapBuilder
         
         public Vector2 Position;
 
+        public void SetType(string type)
+        {
+            _texture = Game.Content.Load<Texture2D>(type);
+        }
+
         public Cell(Game game, string name) : base(game) 
         {
             Debug.Assert(name != "");
